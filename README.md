@@ -1,1 +1,0 @@
-HTML5 GUI that enables a group of users to interact with it using 2D and 3D gestures to put together a newspaper layout.
