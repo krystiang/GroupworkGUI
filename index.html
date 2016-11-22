@@ -1,0 +1,62 @@
+
+
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>groupwork gesture tests</title>
+      <link rel="stylesheet" type="text/css" href="./css/groupwork.css"/>
+      <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
+      <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
+   </head>
+   <body onload="init()">
+      <div id="topSpace">
+         <div class="dropdown" id="dropdown">
+            <button onclick="changeBackground()" class="button" id="backgroundChanger">Change Background</button>
+            <div id="myDropdown" class="dropdown-content">
+            </div>
+         </div>
+         <button class="button" onclick="addPage()">+ Page</button>
+         <button class="button" onclick="removePage()">- Page</button>
+      </div>
+      <div id="interfaceWrapper">
+         <div id="magazineWrapper">
+            <div id="centeringWrapper">
+               <div id="magazine">
+                  <div id="1" class="magazine-page" style="background-image:url(images/backgrounds/blank-page.png);"><span class="oddPage">1</span></div>
+                  <div id="2" class="magazine-page" style="background-image:url(images/backgrounds/blank-page.png);"><span class="evenPage">2</span></div>
+               </div>
+            </div>
+         </div>
+         <div id="sliderWrapper">
+            <div class="prev"><img class="arrow" src="images/layout/arrows-up.png"/></div>
+            <div class="imageSlider" id="imageSlider"></div>
+            <div class="next"><img class="arrow" src="images/layout/arrows-down.png"/></div>
+         </div>
+         <div id="deletionAreaWrapper">
+            <center>
+               <h1>Deletion Area</h1>
+            </center>
+         </div>
+      </div>
+      <script src="./js/groupwork.js"></script>
+      <script type="text/javascript" src="./lib/connector.min.js"></script>
+      <script type="text/javascript" src="./lib/gesture-api.js"></script>		<script>
+         var connector = new MiddlewareConnector("ws://192.168.165.32:8080/connect");
+         
+         connector.subscribe("Gesture", GestureDeserializer, function(obj) {
+         if(obj instanceof Event){
+         if(obj.eventName == "Register"){
+         addUser(obj);
+         }
+         else if(obj.eventName == "Unregister"){
+         deleteUser(obj);
+         }}
+         else{
+         updateUser(obj);
+         updateGUI(obj);
+         }
+         });
+      </script>
+   </body>
+</html>
+

@@ -1,0 +1,31 @@
+	<!DOCTYPE html>
+	<html>
+
+	<head>
+		<title>groupwork gesture tests</title>
+		<link rel="stylesheet" type="text/css" href="./css/upload.css"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+
+	<body>
+	<div id="uploadButtons">
+	<label for="uploadImage" class="uploadImageButton">
+    Upload Images
+</label>
+<input id="uploadImage" class="uploadImage" type="file" multiple="multiple"/>
+
+	<label for="uploadBackground" class="uploadBackgroundButton">
+    Upload Backgrounds
+</label>
+<input id="uploadBackground" class="uploadBackground" type="file" multiple="multiple"/>
+<div id="imageCreator">
+<textarea id="svgText" rows="1" cols="20" maxlength="20">
+</textarea>
+<button id="createImage" class ="createImageButton"">Create Image</button>
+</div>
+</div>
+
+		<script src="./js/upload.js"></script>
+	</body>
+
+	</html>
